@@ -183,8 +183,8 @@ def tensor_to_image(tensor: Tensor, range_norm: bool, half: bool) -> Any:
     return image
 
 
-def preprocess_one_image(image_path: str, device: torch.device) -> Tensor:
-    image = cv2.imread(image_path).astype(np.float32) / 255.0
+def preprocess_one_image(image: np.ndarray, device: torch.device) -> Tensor:
+    image = image.astype(np.float32) / 255.0
 
     # BGR to RGB
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
